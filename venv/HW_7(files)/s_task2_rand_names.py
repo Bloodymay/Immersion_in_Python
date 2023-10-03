@@ -31,5 +31,5 @@ def names_to_file(count, file_name):
         for i in range(count):
             f.write(rnd_name()+"\n")
 
-
-names_to_file(5, "random_names.txt")
+if __name__ == "__main__":
+    names_to_file(5, "random_names.txt")
