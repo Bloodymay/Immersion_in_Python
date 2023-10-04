@@ -24,6 +24,11 @@ import pathlib
 # sort_files(pathlib.Path(r"D:\обучение\python\python part 2\sem7\testt"))
 
 def sort_files(path):
+    """
+    Сортирует файлы согласно их разрешений. Создает папку для каждого типа из них
+    :param path:
+    :return:
+    """
     os.chdir(path)
     files = os.listdir()
     ext = {}
@@ -34,5 +39,5 @@ def sort_files(path):
         os.mkdir(key)
         for i in value:
             os.replace(i, f"{key}\\{i}")
-
-sort_files(r"python part 2\sem7\testt")
+if __name__ == "__main__":
+    sort_files(r"path")
