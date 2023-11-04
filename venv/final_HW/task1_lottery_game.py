@@ -28,8 +28,8 @@ def parser():
     parcer = argparse.ArgumentParser()
     parcer.add_argument("-u", "--userlist", default=[1,1,1,1,1,1,1,1,1,1])
     args = parcer.parse_args()
-    returning_list = list(map(int,args.userlist.split(",")))
-    return returning_list
+
+    return args.userlist
 
 FORMAT = "%(asctime)s %(levelname)s %(message)s"
 logging.basicConfig(level=logging.INFO, filename="lottery_logs.log", filemode="a",
@@ -43,7 +43,9 @@ droppedlist_len = len(dropped_nums)
 try:
 
     user_list = parser()
-    print(user_list)
+    if not isinstance(user_list, list):
+        user_list = list(map(int, user_list.split(",")))
+
     logging.info(f"Получены числа {user_list}")
     userlist_len = len(user_list)
     if userlist_len == droppedlist_len:
