@@ -13,11 +13,17 @@ import argparse
 
 
 class LotteryGame:
+    """
+    Класс отвечающий за создание экземпляра игры
+    """
     def __init__(self, user_list, dropped_nums) -> None:
         self.user_list = user_list
         self.dropped_nums = dropped_nums
 
     def compare_lists(self):
+        """
+        Функция для проверки совпадения чисел в выпавших числах и числах пользователя
+        """
         result_list = []
         for i in self.dropped_nums:
             if i in self.user_list:
@@ -25,6 +31,10 @@ class LotteryGame:
         return f"Совпадающие числа: {result_list}\nКоличество совпадающих чисел: {len(result_list)}"
 
 def parser():
+    """
+    Парсер агрумента (список пользовтельских чисел)
+    :return:
+    """
     parcer = argparse.ArgumentParser()
     parcer.add_argument("-u", "--userlist", default=[1,1,1,1,1,1,1,1,1,1])
     args = parcer.parse_args()
@@ -38,7 +48,6 @@ logging.basicConfig(level=logging.INFO, filename="lottery_logs.log", filemode="a
 
 dropped_nums = [9, 5, 6, 12, 14, 22, 17, 41, 8, 3]
 droppedlist_len = len(dropped_nums)
-
 
 try:
 
